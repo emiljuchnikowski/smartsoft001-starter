@@ -1,0 +1,11 @@
+<header class="app-header">
+  <a routerLink="/notes">Notes</a>
+  @if (authenticated()) {
+  <button type="button" class="app-header__sign-out" (click)="signOut()">
+    Sign out
+  </button>
+  }
+</header>
+<main>
+  <router-outlet />
+</main>

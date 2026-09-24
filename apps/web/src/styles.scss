@@ -1,0 +1,51 @@
+/* The framework's own stylesheets (Tailwind utilities with the `smart:`
+   prefix) are listed before this file in project.json. This file only styles
+   the two pieces the app adds: the header and the login page. */
+
+body {
+  margin: 0;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: #111827;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+
+  a {
+    font-weight: 600;
+    color: #111827;
+    text-decoration: none;
+  }
+
+  &__sign-out {
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background: #fff;
+    cursor: pointer;
+  }
+}
+
+.app-login {
+  max-width: 24rem;
+  margin: 4rem auto;
+  padding: 0 1rem;
+
+  h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  &__error {
+    margin-top: 1rem;
+    color: #b91c1c;
+  }
+}

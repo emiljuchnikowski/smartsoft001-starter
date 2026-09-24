@@ -1,0 +1,37 @@
+# Brings up MongoDB and the API. The frontend runs on the host with
+# `npx nx serve web` and reaches the API through its dev-server proxy
+# (apps/web/proxy.conf.json).
+#
+# Values in a `.env` next to this file override the defaults below (see
+# .env.example); the API itself reads the same variables.
+services:
+  mongo:
+    image: mongo:8
+    ports:
+      - '${MONGO_PORT:-27017}:27017'
+    volumes:
+      - mongo-data:/data/db
+
+  api:
+    build:
+      # The build context is the starter root: the image installs the
+      # workspace and compiles the API from the sources `nx serve` runs.
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    environment:
+      PORT: 3000
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
+      MONGO_DATABASE: ${MONGO_DATABASE:-example-app}
+      JWT_SECRET: ${JWT_SECRET:-change-me}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-3600}
+      AUTH_CLIENT_ID: ${AUTH_CLIENT_ID:-example-app}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin@example.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me}
+    ports:
+      - '${PORT:-3000}:3000'
+
+volumes:
+  mongo-data:

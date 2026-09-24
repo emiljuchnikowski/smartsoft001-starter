@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  main:
+    runs-on: ubuntu-24.04
+    # The Playwright suite drives the real stack: the API against this MongoDB
+    # and the dev server, both started by Playwright. It is opt-in through
+    # RUN_EXAMPLE_APP_E2E so that `nx run-many -t test` stays runnable on a
+    # machine without MongoDB.
+    services:
+      mongo:
+        image: mongo:8
+        ports:
+          - 27017:27017
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npx nx run-many -t build
+      - name: Install Chromium for the Playwright suite
+        run: npx playwright install --with-deps chromium
+      - run: npx nx run-many -t test
+        env:
+          RUN_EXAMPLE_APP_E2E: '1'

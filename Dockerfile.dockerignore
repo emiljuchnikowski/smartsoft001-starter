@@ -1,0 +1,10 @@
+# Applied to the build context of the Dockerfile, the starter root.
+# Everything the API build does not need stays out of the image.
+**/node_modules
+**/dist
+**/coverage
+**/.angular
+**/.nx
+**/.git
+**/tmp
+.env
