@@ -24,6 +24,7 @@ jobs:
           node-version: 26
           cache: npm
       - run: npm ci --no-audit --no-fund
+      - run: npx nx run-many -t lint
       - run: npx nx run-many -t build
       - name: Install Chromium for the Playwright suite
         run: npx playwright install --with-deps chromium

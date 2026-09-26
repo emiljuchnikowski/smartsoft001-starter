@@ -1,6 +1,6 @@
 # smartsoft001 starter
 
-One entity, the whole loop, on `@smartsoft001/full-stack@2.168.0`: an Angular frontend on
+One entity, the whole loop, on `@smartsoft001/full-stack@2.169.0`: an Angular frontend on
 `@smartsoft001/crud-shell-angular` with a list page, an item page and a login, and a NestJS API on
 `@smartsoft001/crud-shell-nestjs`, `@smartsoft001/mongo` and `@smartsoft001/auth-shell-nestjs`. It
 is the smallest application that still uses the framework end to end, as a workspace of its own.
@@ -59,6 +59,8 @@ not require MongoDB; `./run.sh e2e` sets the variable, and the CI workflow in
 `.github/workflows/ci.yml` sets it and provides the database. `npx nx e2e web-e2e` runs the suite
 unconditionally.
 
+`npx nx run-many -t lint` runs ESLint on every project, with the rules in `eslint.config.mjs`.
+
 ## What is where
 
 | Path                                     | What it is                                                                                                                |
@@ -74,7 +76,8 @@ unconditionally.
 | `apps/web-e2e/src/`                      | Playwright: login, list, item page, against the running stack.                                                            |
 | `docker-compose.yml`, `Dockerfile`       | MongoDB plus the API built from this repository.                                                                          |
 | `run.sh`                                 | `up`, `web`, `test` and `e2e`: the commands above, in one script.                                                         |
-| `.github/workflows/ci.yml`               | Build, Jest and the Playwright suite against a MongoDB service, on every push and pull request.                           |
+| `eslint.config.mjs`                      | The ESLint rules every project extends: the Nx configs and the import order.                                              |
+| `.github/workflows/ci.yml`               | Lint, build, Jest and the Playwright suite against a MongoDB service, on every push and pull request.                     |
 
 ## Upgrade
 

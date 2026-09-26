@@ -25,6 +25,14 @@
       "options": {
         "command": "node apps/web-e2e/run.mjs"
       }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/web-e2e/**/*.{ts,mjs}"
+        ]
+      }
     }
   }
 }

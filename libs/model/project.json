@@ -28,6 +28,14 @@
         "jestConfig": "libs/model/jest.config.ts",
         "tsConfig": "libs/model/tsconfig.spec.json"
       }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/model/**/*.ts"
+        ]
+      }
     }
   }
 }
