@@ -1,6 +1,6 @@
 # smartsoft001 starter
 
-One entity, the whole loop, on `@smartsoft001/full-stack@2.176.0`: an Angular frontend on
+One entity, the whole loop, on `@smartsoft001/full-stack@2.177.0`: an Angular frontend on
 `@smartsoft001/crud-shell-angular` with a list page, an item page and a login, and a NestJS API on
 `@smartsoft001/crud-shell-nestjs`, `@smartsoft001/mongo` and `@smartsoft001/auth-shell-nestjs`. It
 is the smallest application that still uses the framework end to end, as a workspace of its own.
@@ -10,7 +10,7 @@ This repository is generated. The `Publish` workflow of the framework repository
 tests the result from a clean clone, and pushes one commit per release. Fix the application in the
 framework repository and the next release regenerates the starter; a change made here is
 overwritten. The application is explained line by line on the Example application page:
-https://emiljuchnikowski.github.io/smartsoft001/docs/example-app
+https://framework.smartflow.biz.pl/docs/example-app
 
 ## Prerequisites
 
