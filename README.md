@@ -1,6 +1,6 @@
 # smartsoft001 starter
 
-One entity, the whole loop, on `@smartsoft001/full-stack@2.171.0`: an Angular frontend on
+One entity, the whole loop, on `@smartsoft001/full-stack@2.172.0`: an Angular frontend on
 `@smartsoft001/crud-shell-angular` with a list page, an item page and a login, and a NestJS API on
 `@smartsoft001/crud-shell-nestjs`, `@smartsoft001/mongo` and `@smartsoft001/auth-shell-nestjs`. It
 is the smallest application that still uses the framework end to end, as a workspace of its own.
