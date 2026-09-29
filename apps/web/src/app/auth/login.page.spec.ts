@@ -28,7 +28,7 @@ describe('LoginPage', () => {
 
     fixture.nativeElement
       .querySelector('form')
-      .dispatchEvent(new Event('submit'));
+      .dispatchEvent(new Event('submit', { bubbles: true }));
     await fixture.whenStable();
     fixture.detectChanges();
   };
@@ -66,6 +66,7 @@ describe('LoginPage', () => {
 
     await submitCredentials();
 
+    expect(signIn).toHaveBeenCalledTimes(1);
     expect(signIn).toHaveBeenCalledWith(username, password);
     expect(navigateByUrl).toHaveBeenCalledWith('/notes');
   });
