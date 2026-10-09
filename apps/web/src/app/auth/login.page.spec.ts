@@ -61,6 +61,12 @@ describe('LoginPage', () => {
     expect(submitButton.textContent?.trim()).toBe('Sign in');
   });
 
+  it('should carry the class the stylesheet lays the page out by', () => {
+    const host: HTMLElement = fixture.nativeElement;
+
+    expect(host.classList).toContain('app-login');
+  });
+
   it('should navigate to the notes page after a successful sign in', async () => {
     signIn.mockResolvedValue(undefined);
 

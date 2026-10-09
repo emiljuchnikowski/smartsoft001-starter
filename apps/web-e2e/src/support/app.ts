@@ -5,6 +5,12 @@ import { APIRequestContext, expect, Locator, Page } from 'playwright/test';
  * components render (the sign-in form, the generated list and item pages) and
  * the one API call that replaces the login UI when a spec is not about login.
  *
+ * The selectors name what the framework renders in Angular and in React
+ * alike: the ids and classes of the sign-in form, the `smart-item-key`
+ * attribute of a list cell, and plain HTML (`tbody tr`, `form input`, `dl p`)
+ * rather than an Angular element name or a CDK attribute. The specs therefore
+ * do not depend on the frontend they drive.
+ *
  * In demo mode (`E2E_BASE_URL` set, see playwright.config.ts) the suite runs
  * against the `demo` build: hash routing, and an in-memory double instead of
  * the API. There is no server to call, so the shortcuts that go through the
@@ -120,7 +126,7 @@ export function endButton(page: Page, text: string): Locator {
 
 /** The list row holding the note with that title. */
 export function noteRow(page: Page, title: string): Locator {
-  return page.locator('tr[cdk-row]').filter({
+  return page.locator('tbody tr').filter({
     has: page.locator('td[smart-item-key="title"]', { hasText: title }),
   });
 }
@@ -159,7 +165,7 @@ export async function createNoteThroughForm(
   await endButton(page, 'add').click();
   await page.waitForURL(/\/notes\/add$/);
 
-  await page.locator('smart-input-text input[type="text"]').fill(title);
+  await page.locator('form input[type="text"]').fill(title);
   await endButton(page, 'add').click();
 
   await page.waitForURL(/\/notes$/);

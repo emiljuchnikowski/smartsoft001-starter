@@ -35,6 +35,9 @@ body {
 }
 
 .app-login {
+  // The host element of the login page, `<app-login>`, is inline by default,
+  // and an inline box ignores the width and the vertical margins below.
+  display: block;
   max-width: 24rem;
   margin: 4rem auto;
   padding: 0 1rem;

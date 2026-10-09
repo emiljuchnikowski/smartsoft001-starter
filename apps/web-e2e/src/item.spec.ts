@@ -32,9 +32,7 @@ test.describe('note item page', () => {
   /** Switches the item page to the edit form and saves a new title. */
   async function saveTitle(page: Page, changedTitle: string): Promise<void> {
     await endButton(page, 'edit').click();
-    await page
-      .locator('smart-input-text input[type="text"]')
-      .fill(changedTitle);
+    await page.locator('form input[type="text"]').fill(changedTitle);
     await endButton(page, 'save').click();
   }
 
@@ -44,7 +42,7 @@ test.describe('note item page', () => {
     await openNote(page, title);
 
     await expect(page.getByRole('heading', { level: 2 })).toContainText(title);
-    await expect(page.locator('smart-detail-text p').first()).toHaveText(title);
+    await expect(page.locator('dl p').first()).toHaveText(title);
   });
 
   test('switches to the edit form with the current title filled in', async ({
@@ -55,9 +53,7 @@ test.describe('note item page', () => {
 
     await endButton(page, 'edit').click();
 
-    await expect(
-      page.locator('smart-input-text input[type="text"]'),
-    ).toHaveValue(title);
+    await expect(page.locator('form input[type="text"]')).toHaveValue(title);
     await expect(endButton(page, 'save')).toBeVisible();
   });
 
@@ -89,8 +85,6 @@ test.describe('note item page', () => {
     await expect(page.getByRole('heading', { level: 2 })).toContainText(
       changedTitle,
     );
-    await expect(page.locator('smart-detail-text p').first()).toHaveText(
-      changedTitle,
-    );
+    await expect(page.locator('dl p').first()).toHaveText(changedTitle);
   });
 });

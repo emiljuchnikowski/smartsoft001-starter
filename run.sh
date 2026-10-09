@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Runs the example application. `./run.sh up` starts MongoDB and the API,
-# `./run.sh web` the frontend, `./run.sh test` the Jest suites and
+# `./run.sh web` the Angular frontend, `./run.sh test` the Jest suites and
 # `./run.sh e2e` the Playwright suite against the running stack.
 set -Eeuo pipefail
 

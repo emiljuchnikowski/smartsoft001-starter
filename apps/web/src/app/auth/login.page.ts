@@ -16,6 +16,9 @@ import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
+  // The login rules of styles.scss sit under `.app-login`. The host element
+  // carries the class, so the template needs no wrapper of its own.
+  host: { class: 'app-login' },
   imports: [SignInFormComponent],
   template: `
     <h1>Sign in</h1>
